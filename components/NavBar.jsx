@@ -8,7 +8,7 @@ import {FaUser, FaBars} from 'react-icons/fa'
 const NavBar = () => {
   return (
     <nav
-      className="border-2 border-red-500 flexBetween 
+      className="flexBetween 
     max-container padding-container relative z-30 py-5"
     >
       <Link href="/">
