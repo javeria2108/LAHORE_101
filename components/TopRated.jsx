@@ -3,6 +3,7 @@ import React from "react";
 import { useGetDocuments } from "./GetDocumentsHook";
 import { useState, useEffect } from "react";
 import ImageCard from "./ImageCard";
+import Loading from "./Loading";
 
 const TopRated = () => {
   const [topRatedPlaces, setTopRatedPlaces] = useState([]);
@@ -51,7 +52,7 @@ const TopRated = () => {
           ))}
         </ul>
       ) : (
-        <p>Loading top-rated places...</p>
+        <Loading/>
       )}
     </section>
   );

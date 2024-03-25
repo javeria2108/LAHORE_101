@@ -13,7 +13,47 @@
 body {
   font-family: Inter;
 }
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 10px;
+  align-items: center;
+}
 
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #484848; /* Grey color for dots */
+  animation: dot-animation 1.2s ease-in-out infinite;
+  margin: 2px;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation-delay: 0.4s;
+}
+
+.dot-3 {
+  animation-delay: 0.8s;
+}
+
+@keyframes dot-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @layer utilities {
   .btn_white { 
     @apply  border-white bg-white px-8 py-3 text-green-50
