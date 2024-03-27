@@ -33,61 +33,62 @@ const PlaceDetails = ({params}) => {
   const imageUrls = placeDetails.imageurls;
   return (
     <div className="container mx-auto px-4 py-8 md:px-8">
-      {/* Full-width first image with H1 text overlay */}
-      <div className="relative">
+      {/* Full-width first image with H1 text overlay (use client for server components) */}
+      <div className="relative mb-4"> {/* Make sure this closing tag exists */}
         <h1 className="text-3xl font-bold text-white z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
           {placeDetails.h1}
         </h1>
-        {imageUrls && imageUrls.length > 0 && (
-          <img
-            className="object-cover w-full h-full rounded-lg absolute top-0 left-0"
-            src={imageUrls[0]}
-            alt={placeDetails.h1}
-          />
-        )}
+        <img
+          className="object-cover w-full h-64 md:h-auto rounded-lg" // Adjust height for non-full width
+          src={imageUrls[0]}
+          alt={placeDetails.h1}
+        />
       </div>
 
-      {/* Remaining Content - Alternate Image and Paragraph Sections */}
-      {imageUrls &&
-        imageUrls.slice(1).map((imageUrl, index) => (
-          <div key={imageUrl} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Paragraph */}
-            <div className={`md:${index % 2 === 0 ? 'order-2' : ''}`}>
-              <p className="text-gray-700 mt-8">{placeDetails[`p${index + 2}`]}</p>
-            </div>
+      {/* First Paragraph (full width) */}
+      <p className="text-gray-700 mb-4">{placeDetails.p1}</p>
 
-            {/* Image */}
-            <div className={`md:${index % 2 === 0 ? 'order-1' : ''}`}>
-              <img
-                key={imageUrl}
-                className="object-contain h-48 md:h-auto rounded-lg shadow-md w-full md:w-1/2"
-                src={imageUrl}
-                alt="Place Image"
-              />
-            </div>
-          </div>
-        ))}
-
-      {/* Remaining paragraphs after images (if any) */}
-      {placeDetails.p1 && (
-        <p className="text-gray-700 mt-8">{placeDetails.p1}</p>
-      )}
-
-      {/* Remaining content (headings and bullet points) */}
+      {/* Remaining Content (flexbox rows) */}
       {Object.entries(placeDetails)
         .filter(([key]) => key.startsWith('h') && key !== 'h1')
-        .map(([key, value]) => (
-          <div key={key} className="mt-8">
-            <h2 className="text-2xl font-bold mb-2">{value}</h2>
-            <ul className="list-disc pl-4">
-              {placeDetails[`p${key.slice(1)}`].map((item) => (
-                <li key={item} className="text-gray-700">
-                  {item}
-                </li>
-              ))}
-            </ul>
+        .map(([key, value], index) => (
+          <div key={key} className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+            {/* Heading and Paragraph (Left) on smaller screens, stacked on larger */}
+            <div className="w-full md:w-1/2 order-1 md:order-none">
+              <h2 className="text-2xl font-bold mb-2">{value}</h2>
+              <ul className="list-disc pl-4">
+                {placeDetails[`p${key.slice(1)}`].map((item) => (
+                  <li key={item} className="text-gray-700">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Image (Right) */}
+            {imageUrls[index + 1] && (
+              <img
+                key={imageUrls[index + 1]}
+                className="object-cover w-full md:w-1/2 h-48 md:h-auto rounded-lg shadow-md order-2 md:order-none"
+                src={imageUrls[index + 1]}
+                alt="Place Image"
+              />
+            )}
           </div>
         ))}
+
+      {/* Full-width H5 */}
+      {placeDetails.h5 && (
+        <h2 className="text-2xl font-bold mb-2">{placeDetails.h5}</h2> // Use h2 for consistency
+
+      )}
+       <ul className="list-disc pl-4 w-full">
+                {placeDetails.p5.map((item) => (
+                  <li key={item} className="text-gray-700">
+                    {item}
+                  </li>
+                ))}
+              </ul>
     </div>
   );
 }
