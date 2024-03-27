@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { useGetDocuments } from "./GetDocumentsHook";
+import { useGetDocuments } from "../src/GetDocumentsHook";
 import { useState, useEffect } from "react";
 import ImageCard from "./ImageCard";
 import Loading from "./Loading";
@@ -47,6 +47,7 @@ const TopRated = () => {
                 title={place.name}
                 averageRating={place.averageRating}
                 isTopRated={true}
+                placeid={place.placeid}
               />
             </li>
           ))}

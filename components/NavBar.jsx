@@ -1,10 +1,11 @@
+'use client'
 import { NAV_LINKS } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Button from "./Button";
 import {FaUser, FaBars} from 'react-icons/fa'
-
+import {signIn} from 'next-auth/react';
 const NavBar = () => {
   return (
     <nav
@@ -34,12 +35,15 @@ const NavBar = () => {
           </Link>
         ))}
       </ul>
-      <div className="lg:flexCenter hidden">
+      <div onClick={()=>signIn('google')}>
             <Button
             type="button"
-            title="Login"
+            title="Sign Up"
             icon={<FaUser />} 
-            variant="btn_dark_green"/>
+            variant="btn_dark_green"
+            
+            />
+          
       </div>
       <FaBars className="lg:hidden" size={30}/>
     </nav>

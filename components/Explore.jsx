@@ -1,5 +1,5 @@
 "use client";
-import { useGetDocuments } from "./GetDocumentsHook";
+import { useGetDocuments } from "../src/GetDocumentsHook";
 import { useState,useEffect } from "react";
 import ImageCard from "./ImageCard";
 import Loading from "./Loading";
