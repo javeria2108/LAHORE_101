@@ -2,23 +2,34 @@
 import { NAV_LINKS } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import {React, useState, useEffect} from "react";
 import Button from "./Button";
 import {FaUser, FaBars} from 'react-icons/fa'
-import {signIn} from 'next-auth/react';
+import {signIn, useSession} from 'next-auth/react';
 const NavBar = () => {
+  const { data: session, status } = useSession(); // Get user session data and status
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Local state for login status
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [status]); // Update isLoggedIn on session status change
   return (
     <nav
       className="flexBetween 
-    max-container padding-container relative z-30 py-5"
+     padding-container relative z-30 py-5 bg-bgcolor h-28"
     >
       <Link href="/">
-        <Image
-          src="/Lahore101-logos.jpeg"
-          alt="Lahore101"
-          width={74}
-          height={29}
-        />
+      <img
+    src="/Lahore101-logos.png"
+    alt="Lahore101"
+    width="130px" // Set width with unit
+    height="130px" // Set height with unit
+    style={{ objectFit: "contain", padding: 0, margin: 0 }} // Inline styles
+  />
       </Link>
       {/*Links on nav bar apppear on big screen and hidden on small screens*/}
       <ul className="hidden h-full gap-12 lg:flex">
@@ -28,23 +39,23 @@ const NavBar = () => {
             href={link.href}
             key={link.key}
             className="
-            regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5
+            regular-16 text-primaryDark flexCenter cursor-pointer pb-1.5
             transition-all hover:font-bold"
           >
             {link.label}
           </Link>
         ))}
       </ul>
-      <div onClick={()=>signIn('google')}>
-            <Button
-            type="button"
-            title="Sign Up"
-            icon={<FaUser />} 
-            variant="btn_dark_green"
-            
-            />
-          
-      </div>
+     {/* Conditionally render button based on login status */}
+     {isLoggedIn ? (
+        <Link href="/Profile">
+          <Button type="button" title="Profile" icon={<FaUser />} variant="btn_dark_green" />
+        </Link>
+      ) : (
+        <div onClick={() => signIn("google")}>
+          <Button type="button" title="Sign Up" icon={<FaUser />} variant="btn_dark_green" />
+        </div>
+      )}
       <FaBars className="lg:hidden" size={30}/>
     </nav>
   );
