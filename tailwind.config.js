@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       colors: {
         'bgcolor':'#202833',
+        'bgDark':'#0B0C10',
         'primary': '#66FCF1',
         'primaryDark': '#46A29F',
-        'logo': '#edebeb',
-        'bg1': '#4c05b0',
+        'primaryLight': '#C5C6C8',
         green: {
           50: '#30AF5B',
           90: '#292C27',

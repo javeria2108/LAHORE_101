@@ -36,7 +36,8 @@ const TopRated = () => {
 
   return (
     <section className="top-rated-section px-4 py-8 md:px-8 lg:px-16"> {/* Added section and padding */}
-      <h2 className="text-2xl font-bold mb-4">Top Rated Places</h2> {/* Heading with margin */}
+      <h2 className="text-2xl font-bold mb-4 text-primaryLight">Top Rated Places</h2> {/* Heading with margin */}
+      <p className="text-xl mb-4 text-primaryLight">Explore the top places rated by our users</p>
 
       {topRatedPlaces.length > 0 ? (
         <ul className="top-rated-places grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

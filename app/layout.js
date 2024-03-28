@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
       <body>
    <SessionProvider session={session}>
         <NavBar/>
-        <main className="relative overflow-hidden" >
+        <main className="relative overflow-hidden bg-bgcolor" >
         {children}
         </main>
         <Footer/>

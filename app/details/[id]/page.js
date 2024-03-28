@@ -31,11 +31,20 @@ const PlaceDetails = ({params}) => {
     return <div>Loading...</div>;
   }
   const imageUrls = placeDetails.imageurls;
+
+//   const ParagraphStyle=(paragraph)=>{
+//     return(
+
+//     )
+//   }
   return (
     <div className="container mx-auto px-4 py-8 md:px-8">
       {/* Full-width first image with H1 text overlay (use client for server components) */}
-      <div className="relative mb-4"> {/* Make sure this closing tag exists */}
-        <h1 className="text-3xl font-bold text-white z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+      <div className="relative mb-4">
+      <h1
+          className="text-3xl font-bold text-white z-10 absolute top-0 left-0 p-16 bg-gradient-to-b from-black
+          opacity-80 w-full" // Update position classes
+        >
           {placeDetails.h1}
         </h1>
         <img
@@ -43,33 +52,35 @@ const PlaceDetails = ({params}) => {
           src={imageUrls[0]}
           alt={placeDetails.h1}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black
+        opacity-80"></div> {/* Gradient overlay */}
       </div>
 
       {/* First Paragraph (full width) */}
-      <p className="text-gray-700 mb-4">{placeDetails.p1}</p>
+      <p className="text-white mb-4">{placeDetails.p1}</p>
 
       {/* Remaining Content (flexbox rows) */}
       {Object.entries(placeDetails)
-        .filter(([key]) => key.startsWith('h') && key !== 'h1')
+        .filter(([key]) => key.startsWith("h") && key !== "h1")
         .map(([key, value], index) => (
-          <div key={key} className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+          <div key={key} className="flex flex-col md:flex-row  gap-4 mb-4">
             {/* Heading and Paragraph (Left) on smaller screens, stacked on larger */}
             <div className="w-full md:w-1/2 order-1 md:order-none">
-              <h2 className="text-2xl font-bold mb-2">{value}</h2>
-              <ul className="list-disc pl-4">
+              <h2 className="text-2xl font-bold mb-2 text-white">{value}</h2>
+              <ul className="list-disc pl-4 text-white"> {/* White text for list */}
                 {placeDetails[`p${key.slice(1)}`].map((item) => (
-                  <li key={item} className="text-gray-700">
+                  <li key={item} className="text-white">
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Image (Right) */}
+            {/* Image (Right) with reduced size */}
             {imageUrls[index + 1] && (
               <img
                 key={imageUrls[index + 1]}
-                className="object-cover w-full md:w-1/2 h-48 md:h-auto rounded-lg shadow-md order-2 md:order-none"
+                className="object-cover w-1/2 md:w-1/3 h-48 md:h-auto rounded-lg shadow-md order-2 md:order-none"
                 src={imageUrls[index + 1]}
                 alt="Place Image"
               />
@@ -79,16 +90,16 @@ const PlaceDetails = ({params}) => {
 
       {/* Full-width H5 */}
       {placeDetails.h5 && (
-        <h2 className="text-2xl font-bold mb-2">{placeDetails.h5}</h2> // Use h2 for consistency
-
+        <h2 className="text-2xl font-bold mb-2 text-white">{placeDetails.h5}</h2> // Use h2 for consistency
       )}
-       <ul className="list-disc pl-4 w-full">
-                {placeDetails.p5.map((item) => (
-                  <li key={item} className="text-gray-700">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+
+      <ul className="list-disc pl-4 text-white w-full">
+        {placeDetails.p5.map((item) => (
+          <li key={item} className="text-white">
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

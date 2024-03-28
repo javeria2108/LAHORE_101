@@ -10,7 +10,7 @@ const ImageCard = ({ imageSrc, title, averageRating, isTopRated, placeid }) => {
         alt={title}
         className="w-full h-48 object-cover group-hover:scale-110 transition duration-300 ease-in-out"
       />
-      <div className="p-4 absolute inset-0 bg-gradient-to-t from-gray-900 flex flex-col justify-end">
+      <div className="p-4 absolute inset-0 bg-gradient-to-t from-gray-800 flex flex-col justify-end">
         {/* Title and rating displayed below image by default */}
         <div className="mb-4">
           <h3 className="text-white text-xl font-bold">{title}</h3>

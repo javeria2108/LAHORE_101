@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <nav
       className="flexBetween 
-     padding-container relative z-30 py-5 bg-bgcolor h-28"
+     padding-container relative z-30 py-5 bg-bgDark h-28"
     >
       <Link href="/">
       <img
