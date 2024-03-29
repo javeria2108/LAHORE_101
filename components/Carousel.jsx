@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect } from 'react';
 
 const Carousel = ({placeDetails}) => {
-    console.log(placeDetails)
+    
     useEffect(()=>{
         const init = async () => {
             const { Carousel, initTWE } = await import("tw-elements");

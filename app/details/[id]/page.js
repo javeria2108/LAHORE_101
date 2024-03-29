@@ -14,7 +14,6 @@ const PlaceDetails = ({ params }) => {
     const fetchPlaceDetails = async () => {
       const placeRef = "place-description"; // Hardcoded collection name
       const data = await getDoc(placeRef); // Call getDoc from hook
-      console.log(data);
       data.map((item) => console.log(item.placeid == placeId));
       const place = data.find((item) => item.placeid == placeId); // Find place by ID
 
@@ -71,7 +70,7 @@ mt-10">
             </div>
 <div className="mt-20">
       {/* Comments component */}
-      <Comments />
+      <Comments placeId={placeId}/>
       </div>
     </div>
   );
