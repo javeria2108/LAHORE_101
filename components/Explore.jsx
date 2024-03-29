@@ -72,7 +72,7 @@ const Places = () => {
         <ul className="explore-places grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredPlaces.map((place) => (
             <li key={place.id}>
-              <ImageCard imageSrc={place.imageurls[0]} title={place.name} />
+              <ImageCard imageSrc={place.imageurls[0]} title={place.name} placeid={place.placeid} />
             </li>
           ))}
         </ul>

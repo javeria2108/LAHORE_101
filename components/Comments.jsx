@@ -53,11 +53,11 @@ const Comments = ({ placeId }) => {
   };
 
   return (
-    <div className="comments bg-gray-100 p-4 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Reviews</h2>
+    <div className="comments bg-bgDark p-4 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-primaryLight">Reviews</h2>
       <ul className="list-none space-y-4">
         {reviews.length === 0 && (
-          <li className="text-gray-500">
+          <li className="text-primary">
             No reviews yet. Be the first to leave one!
           </li>
         )}
@@ -68,36 +68,39 @@ const Comments = ({ placeId }) => {
           >
             <div className="flex items-center space-x-2">
               <span className="font-bold">{review.username}</span>
-              <span className="text-gray-500 text-sm">
+              <span className="text-primaryLight text-sm">
                 ({review.rating} stars)
               </span>
             </div>
-            <p className="text-gray-700">{review.comment}</p>
+            <p className="text-primaryLight">{review.comment}</p>
           </li>
         ))}
       </ul>
 
       {session && (
         <div className="mt-6">
-          <h3 className="text-xl font-bold mb-2">Leave your review</h3>
+          <h3 className="text-xl font-bold mb-2 text-primaryLight">Leave your review</h3>
           <form
             onSubmit={handleSubmitComment}
             className="flex flex-col space-y-2"
           >
             <textarea
-              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none
+              bg-bgcolor"
               placeholder="Write your comment..."
               value={comment}
               onChange={handleCommentChange}
               rows={5}
             />
             <div className="flex items-center space-x-2">
-              <label htmlFor="rating">Rating:</label>
+              <label htmlFor="rating" className="text-primaryLight">Rating:</label>
               <select
                 id="rating"
                 value={rating}
                 onChange={handleRatingChange}
-                className="border rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-blue-500
+                bg-bgcolor"
+
               >
                 <option value="0">0 stars</option>
                 <option value="1">1 star</option>
@@ -107,7 +110,7 @@ const Comments = ({ placeId }) => {
                 <option value="5">5 stars</option>
               </select>
             </div>
-            <button type="submit" className="btn-primary px-4 py-2">
+            <button type="submit" className="btn-primary px-4 py-2 bg-bgcolor w-40 m-auto rounded-lg text-primaryDark">
               Submit Review
             </button>
           </form>

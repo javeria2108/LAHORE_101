@@ -50,34 +50,7 @@ const NavBar = () => {
           </Link>
         ))}
     
-        <p  className="
-            regular-16 text-primaryDark flex flex-row flexCenter cursor-pointer pb-1.5
-            transition-all hover:font-bold gap-4"  onClick={toggleDropdown}>Categories {">"}{isOpen && (
-              <ul
-                className=" bg-gray-800 text-white rounded-md mt-2 px-2 py-2 shadow-md right-0 w-40" // Adjust width as needed
-              >
-                <li className="hover:bg-gray-700">
-                  <Link href="/categories/historical-places" >
-                  Historical Places
-                  </Link>
-                </li>
-                <li className="hover:bg-gray-700" >
-                  <Link href="/categories/malls">
-                    Malls
-                  </Link>
-                </li>
-                <li className="hover:bg-gray-700">
-                  <Link href="/categories/restaurants">
-                    Restaurants
-                  </Link>
-                </li>
-                <li className="hover:bg-gray-700">
-                  <Link href="/categories/parks" >
-                    Parks
-                  </Link>
-                </li>
-              </ul>
-            )}</p>
+       
             
           
       </ul>
