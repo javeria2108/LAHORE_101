@@ -76,7 +76,36 @@ const NavBar = () => {
         </div>
       )}
       </div>
-      <FaBars className="lg:hidden text-primary" size={30}  />
+      <FaBars className="lg:hidden text-primary hover:text-primaryDark cursor-pointer" size={30} onClick={toggleDropdown} />
+       {/* Sidebar menu (hidden initially) */}
+       <ul
+        className={`absolute top-0 left-0 w-full h-full bg-bgDark mt-28 transition-all duration-300 ease-in-out z-50 ${
+          isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
+        }`}
+      >
+        <li className="py-4 px-6 text-xl font-medium text-white border-b border-primary">
+          Menu
+        </li>
+        {/* Loop over navigation links */}
+        {NAV_LINKS.map((link) => (
+          <li key={link.key} className="py-2 px-6 text-base bg-bgDark text-white hover:text-gray-300">
+            <Link href={link.href}>{link.label}</Link>
+          </li>
+        ))}
+
+        {/* Conditionally render button based on login status */}
+        <li className="py-2 px-6 text-base text-white hover:text-gray-300 bg-bgDark">
+          {isLoggedIn ? (
+            <Link href="/pages/Profile">
+              <Button type="button" title="Profile" icon={<FaUser />} variant="btn_dark_green" />
+            </Link>
+          ) : (
+            <div onClick={() => signIn("google")}>
+              <Button type="button" title="Sign In" icon={<FaUser />} variant="btn_dark_green" />
+            </div>
+          )}
+        </li>
+      </ul>
     </nav>
   );
 };
