@@ -1,7 +1,9 @@
+'use client'
 import React from "react";
 import { FaMap, FaPhone, FaEnvelope } from "react-icons/fa";
 import { collection, addDoc } from "@firebase/firestore";
 import { db } from "@/lib/firebase-config";
+import { useState } from "react";
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
