@@ -59,12 +59,16 @@ const Carousel = ({placeDetails}) => {
           className="block w-full"
           alt="..."
         />
-        <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block bg-black bg-opacity-70">
+        <div className="hidden absolute inset-x-[15%] bottom-5 py-5 text-center  text-white md:block bg-black bg-opacity-70">
           <h5 className="md:text-xl text-lg">{placeDetails.h2}</h5>
-          <p className='text-sm md:text-lg'>
+          <p className='text-lg '>
             {placeDetails.p2}
           </p>
         </div>
+        <div className='mt-10 md:hidden text-white'>
+        <h1>{placeDetails.h2}</h1>
+           <p className='text-sm'>{placeDetails.p2}</p> 
+          </div>
       </div>
       <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
@@ -76,12 +80,16 @@ const Carousel = ({placeDetails}) => {
           className="block w-full"
           alt="..."
         />
-        <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
+        <div className="hidden absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
           <h5 className="md:text-xl text-lg">{placeDetails.h3}</h5>
-          <p className='text-sm md:text-lg'>
+          <p className='text-lg'>
             {placeDetails.p3}
           </p>
         </div>
+        <div className='mt-10 md:hidden text-white'>
+        <h1>{placeDetails.h3}</h1>
+           <p className='text-sm'>{placeDetails.p3}</p> 
+          </div>
       </div>
       <div
         className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
@@ -93,12 +101,16 @@ const Carousel = ({placeDetails}) => {
           className="block w-full"
           alt="..."
         />
-        <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
+        <div className="hidden absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
           <h5 className="md:text-xl text-lg">{placeDetails.h4}</h5>
-          <p className='text-sm md:text-lg'>
+          <p className='text-lg'>
             {placeDetails.p4}
           </p>
         </div>
+        <div className='mt-10 md:hidden text-white'>
+        <h1>{placeDetails.h4}</h1>
+           <p className='text-sm'>{placeDetails.p4}</p> 
+          </div>
       </div>
     </div>
 
