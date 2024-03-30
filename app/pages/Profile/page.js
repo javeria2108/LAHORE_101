@@ -17,9 +17,9 @@ const { data: session, status } = useSession(); // Get session data and status
   return (
     <>
       {session?.user?.name ? ( // Only display profile details if user is authenticated
-        <div className="profile flex flex-col items-center space-y-2 md:flex-row md:space-x-4">
-          <div className="text-gray-700 font-medium">{session.user.name}</div>
-          <div  onClick={handleLogout} >
+        <div className="content-container items-center justify-center m-auto space-y-2 md:space-x-4 gap-14">
+          <div className=" text-2xl text-primaryDark font-medium">Welcome {session.user.name}</div>
+          <div  onClick={handleLogout}  >
           <Button
             type="button"
             title="Sign Out"

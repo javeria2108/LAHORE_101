@@ -13,6 +13,12 @@ body {
   font-family: Inter;
   background-color: #202833;
 }
+
+.content-container {
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack elements vertically */
+  min-height: 100vh; /* Ensure minimum height of viewport */
+}
 .loading {
   display: inline-block;
   position: relative;

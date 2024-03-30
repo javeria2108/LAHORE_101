@@ -57,7 +57,7 @@ const NavBar = () => {
       {/* Conditionally render button based on login status */}
       <div className="hidden lg:flex">
       {isLoggedIn ? (
-        <Link href="pages/Profile">
+        <Link href="/pages/Profile">
           <Button
             type="button"
             title="Profile"

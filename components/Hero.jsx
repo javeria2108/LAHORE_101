@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 function Hero() {
   return (
-    <div className="hero relative h-screen overflow-hidden">
+    <section className="hero relative h-screen overflow-hidden">
       <div className="hero-image relative w-full h-full overflow-hidden">
         <img
           src="/lahore101-bg.jpg" // Replace with your image path
@@ -19,7 +19,7 @@ function Hero() {
           <Button type="button" title="Get Started" variant="btn_dark_green" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
