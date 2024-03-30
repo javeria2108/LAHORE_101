@@ -60,8 +60,8 @@ const Carousel = ({placeDetails}) => {
           alt="..."
         />
         <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block bg-black bg-opacity-70">
-          <h5 className="text-xl">{placeDetails.h2}</h5>
-          <p>
+          <h5 className="md:text-xl text-lg">{placeDetails.h2}</h5>
+          <p className='text-sm md:text-lg'>
             {placeDetails.p2}
           </p>
         </div>
@@ -77,8 +77,8 @@ const Carousel = ({placeDetails}) => {
           alt="..."
         />
         <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
-          <h5 className="text-xl">{placeDetails.h3}</h5>
-          <p>
+          <h5 className="md:text-xl text-lg">{placeDetails.h3}</h5>
+          <p className='text-sm md:text-lg'>
             {placeDetails.p3}
           </p>
         </div>
@@ -94,8 +94,8 @@ const Carousel = ({placeDetails}) => {
           alt="..."
         />
         <div className="absolute inset-x-[15%] bottom-5 py-5 text-center text-white md:block  bg-black bg-opacity-70">
-          <h5 className="text-xl">{placeDetails.h4}</h5>
-          <p>
+          <h5 className="md:text-xl text-lg">{placeDetails.h4}</h5>
+          <p className='text-sm md:text-lg'>
             {placeDetails.p4}
           </p>
         </div>
