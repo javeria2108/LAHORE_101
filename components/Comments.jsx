@@ -7,7 +7,7 @@ import { db } from "@/lib/firebase-config";
 const Comments = ({ placeId }) => {
   const [reviews, setReviews] = useState([]);
   const [comment, setComment] = useState("");
-  const [error, setError]=useState("");
+  const [error, setError] = useState("");
   const [rating, setRating] = useState(0);
   const { getDoc } = useGetDocuments();
   const { data: session } = useSession(); // Get session data from useSession
@@ -38,8 +38,9 @@ const Comments = ({ placeId }) => {
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     if (!session || !comment || !rating) {
-      setError("please select a rating")
-      return;} // Validation (check for logged-in user)
+      setError("please select a rating");
+      return;
+    } // Validation (check for logged-in user)
 
     const newReview = {
       username: session.user.name, // Replace with username from session data
@@ -53,7 +54,7 @@ const Comments = ({ placeId }) => {
     await addDoc(reviewsRef, newReview);
 
     setComment("Review Submitted! refresh to see your comment");
-    setRating(0); 
+    setRating(0);
   };
 
   return (
@@ -62,7 +63,8 @@ const Comments = ({ placeId }) => {
       <ul className="list-none space-y-4">
         {reviews.length === 0 && (
           <li className="text-primary">
-            No reviews yet. Be the first to leave one! You need to sign in to leave review
+            No reviews yet. Be the first to leave one! You need to sign in to
+            leave review
           </li>
         )}
         {reviews.map((review) => (
@@ -71,7 +73,9 @@ const Comments = ({ placeId }) => {
             className="flex flex-col border border-gray-300 rounded-lg p-4 space-y-2"
           >
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-primaryDark">{review.username}</span>
+              <span className="font-bold text-primaryDark">
+                {review.username}
+              </span>
               <span className="text-primaryLight text-sm">
                 ({review.rating} stars)
               </span>
@@ -83,7 +87,9 @@ const Comments = ({ placeId }) => {
 
       {session && (
         <div className="mt-6">
-          <h3 className="text-xl font-bold mb-2 text-primaryLight">Leave your review</h3>
+          <h3 className="text-xl font-bold mb-2 text-primaryLight">
+            Leave your review
+          </h3>
           <form
             onSubmit={handleSubmitComment}
             className="flex flex-col space-y-2"
@@ -97,14 +103,15 @@ const Comments = ({ placeId }) => {
               rows={5}
             />
             <div className="flex items-center space-x-2">
-              <label htmlFor="rating" className="text-primaryLight">Rating:</label>
+              <label htmlFor="rating" className="text-primaryLight">
+                Rating:
+              </label>
               <select
                 id="rating"
                 value={rating}
                 onChange={handleRatingChange}
                 className="border rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-primaryDark
                 bg-bgcolor"
-
               >
                 <option value="0">0 stars</option>
                 <option value="1">1 star</option>
@@ -114,7 +121,10 @@ const Comments = ({ placeId }) => {
                 <option value="5">5 stars</option>
               </select>
             </div>
-            <button onClick={handleSubmitComment} className="btn-primary px-4 py-2 bg-bgcolor hover:bg-primaryLight w-40 m-auto rounded-lg text-primaryDark">
+            <button
+              onClick={handleSubmitComment}
+              className="btn-primary px-4 py-2 bg-bgcolor hover:bg-primaryLight w-40 m-auto rounded-lg text-primaryDark"
+            >
               Submit Review
             </button>
             <p className=" text-red-800">{error}</p>

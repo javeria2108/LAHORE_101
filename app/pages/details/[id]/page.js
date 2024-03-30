@@ -57,9 +57,7 @@ const PlaceDetails = ({ params }) => {
       <div className="flex items-center md:w-3/4 w-full justify-center m-auto">
         <Carousel placeDetails={placeDetails} />
       </div>
-      <div
-        className="flex flex-col items-center w-full md:w-3/4 justify-center m-auto gap-8 p-10 bg-bgDark bg-opacity-70 mt-10"
-      >
+      <div className="flex flex-col items-center w-full md:w-3/4 justify-center m-auto gap-8 p-10 bg-bgDark bg-opacity-70 mt-10">
         <h1
           className="text-xl md:text-3xl font-bold text-primaryLight w-full" // Update position classes
         >

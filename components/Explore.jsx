@@ -9,9 +9,10 @@ const Places = () => {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all"); // Default category
   useEffect(() => {
-    getDoc("places").then((data) => {setPlaces(data)
-    setFilteredPlaces(data);});
-   
+    getDoc("places").then((data) => {
+      setPlaces(data);
+      setFilteredPlaces(data);
+    });
   }, []);
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -22,12 +23,15 @@ const Places = () => {
     }
   };
   return (
-    <section id="scroll-target" className="explore-section px-4 py-8 md:px-8 lg:px-16 ">
+    <section
+      id="scroll-target"
+      className="explore-section px-4 py-8 md:px-8 lg:px-16 "
+    >
       <h2 className="text-2xl font-bold mb-4 text-primaryLight">
         Browse Different Categories
       </h2>
 
-      <div className="flex flex-grid md:flex-row items-center mb-4 gap-6 text-primary text-xl " >
+      <div className="grid grid-cols-2 lg:flex lg:flex-row items-center mb-4 gap-2 lg:gap-6 text-primary text:sm md:text-xl ">
         <button
           className={`hover:text-primaryLight focus:outline-none  ${
             selectedCategory === "all" ? "text-primaryLight" : ""
@@ -74,7 +78,11 @@ const Places = () => {
         <ul className="explore-places grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredPlaces.map((place) => (
             <li key={place.id}>
-              <ImageCard imageSrc={place.imageurls[0]} title={place.name} placeid={place.placeid} />
+              <ImageCard
+                imageSrc={place.imageurls[0]}
+                title={place.name}
+                placeid={place.placeid}
+              />
             </li>
           ))}
         </ul>

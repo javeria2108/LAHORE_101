@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import Link from "next/link";
+import React from "react";
+import { FaStar } from "react-icons/fa";
 
 const ImageCard = ({ imageSrc, title, averageRating, isTopRated, placeid }) => {
   return (
@@ -30,10 +30,9 @@ const ImageCard = ({ imageSrc, title, averageRating, isTopRated, placeid }) => {
 
         {/* "Show details" text displayed only on hover, centered on image */}
         <Link href={`pages/details/${placeid}`}>
-        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-xs bg-gradient-to-b from-gray-900 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out"
-        >
-          See details
-        </span>
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-xs bg-gradient-to-b from-gray-900 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
+            See details
+          </span>
         </Link>
       </div>
     </div>
