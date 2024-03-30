@@ -12,7 +12,8 @@
 body {
   font-family: Inter;
   background-color: #202833;
-  
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .content-container {

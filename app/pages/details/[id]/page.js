@@ -31,7 +31,7 @@ const PlaceDetails = ({ params }) => {
   }, [placeId]);
 
   if (!placeDetails) {
-    return <Loading/>;
+    return <Loading />;
   }
   const imageUrls = placeDetails.imageurls;
   console.log(imageUrls);
@@ -51,27 +51,29 @@ const PlaceDetails = ({ params }) => {
           src={imageUrls[0]}
           alt={placeDetails.h1}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black opacity-80"></div> {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black opacity-80"></div>{" "}
+        {/* Gradient overlay */}
       </div>
       <div className="flex items-center md:w-3/4 w-full justify-center m-auto">
-<Carousel placeDetails={placeDetails}/>
-</div>
-<div className="flex flex-col items-center w-3/4 justify-center m-auto gap-8 p-10 bg-bgDark bg-opacity-70
-mt-10">
-<h1
+        <Carousel placeDetails={placeDetails} />
+      </div>
+      <div
+        className="flex flex-col items-center w-full md:w-3/4 justify-center m-auto gap-8 p-10 bg-bgDark bg-opacity-70 mt-10"
+      >
+        <h1
           className="text-xl md:text-3xl font-bold text-primaryLight w-full" // Update position classes
         >
           {placeDetails.h5}
         </h1>
         <ul className="list-disc text-white">
-              {placeDetails.p5.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            </div>
-<div className="mt-20">
-      {/* Comments component */}
-      <Comments placeId={placeId}/>
+          {placeDetails.p5.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-20">
+        {/* Comments component */}
+        <Comments placeId={placeId} />
       </div>
     </div>
   );
