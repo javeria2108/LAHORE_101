@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-4 px-4 md:flex md:items-center md:justify-between h-38">
+    <footer className="bg-bgDark text-white py-4 px-4 md:flex md:items-center md:justify-between h-38">
       <div className="flex flex-col items-center px-20">
         <img src='/Lahore101-logos.png' alt="Website Logo" className="h-32 w-auto mr-4" />
         <p>© {new Date().getFullYear()} Lahore 101. All Rights Reserved.</p>
