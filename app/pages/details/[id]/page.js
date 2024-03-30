@@ -3,6 +3,7 @@ import { useGetDocuments } from "@/src/GetDocumentsHook"; // Import custom hook
 import { useState, useEffect } from "react";
 import Comments from "@/components/Comments";
 import Carousel from "@/components/Carousel";
+import Loading from "@/components/Loading";
 
 const PlaceDetails = ({ params }) => {
   const placeId = params.id;
@@ -30,7 +31,7 @@ const PlaceDetails = ({ params }) => {
   }, [placeId]);
 
   if (!placeDetails) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
   const imageUrls = placeDetails.imageurls;
   console.log(imageUrls);

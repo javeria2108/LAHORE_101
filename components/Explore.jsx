@@ -9,7 +9,9 @@ const Places = () => {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all"); // Default category
   useEffect(() => {
-    getDoc("places").then((data) => setPlaces(data));
+    getDoc("places").then((data) => {setPlaces(data)
+    setFilteredPlaces(data);});
+   
   }, []);
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -20,7 +22,7 @@ const Places = () => {
     }
   };
   return (
-    <section className="explore-section px-4 py-8 md:px-8 lg:px-16">
+    <section id="scroll-target" className="explore-section px-4 py-8 md:px-8 lg:px-16 ">
       <h2 className="text-2xl font-bold mb-4 text-primaryLight">
         Browse Different Categories
       </h2>
@@ -68,7 +70,7 @@ const Places = () => {
         </button>
       </div>
 
-      {filteredPlaces.length > 0 ? (
+      {places.length > 0 ? (
         <ul className="explore-places grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredPlaces.map((place) => (
             <li key={place.id}>
