@@ -27,7 +27,7 @@ const Places = () => {
         Browse Different Categories
       </h2>
 
-      <div className="flex items-center mb-4 gap-6 text-primary text-xl " >
+      <div className="flex flex-grid md:flex-row items-center mb-4 gap-6 text-primary text-xl " >
         <button
           className={`hover:text-primaryLight focus:outline-none  ${
             selectedCategory === "all" ? "text-primaryLight" : ""

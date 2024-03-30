@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { useGetDocuments } from "@/src/GetDocumentsHook";
 import { useSession } from "next-auth/react"; // Use useSession hook
 import { collection, addDoc } from "@firebase/firestore";
+import { db } from "@/lib/firebase-config";
 const Comments = ({ placeId }) => {
   const [reviews, setReviews] = useState([]);
   const [comment, setComment] = useState("");
+  const [error, setError]=useState("");
   const [rating, setRating] = useState(0);
   const { getDoc } = useGetDocuments();
   const { data: session } = useSession(); // Get session data from useSession
@@ -35,7 +37,9 @@ const Comments = ({ placeId }) => {
 
   const handleSubmitComment = async (e) => {
     e.preventDefault();
-    if (!session || !comment || !rating) return; // Validation (check for logged-in user)
+    if (!session || !comment || !rating) {
+      setError("please select a rating")
+      return;} // Validation (check for logged-in user)
 
     const newReview = {
       username: session.user.name, // Replace with username from session data
@@ -48,7 +52,7 @@ const Comments = ({ placeId }) => {
     const reviewsRef = collection(db, "places-reviews");
     await addDoc(reviewsRef, newReview);
 
-    setComment("");
+    setComment("Review Submitted! refresh to see your comment");
     setRating(0); 
   };
 
@@ -85,8 +89,8 @@ const Comments = ({ placeId }) => {
             className="flex flex-col space-y-2"
           >
             <textarea
-              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none
-              bg-bgcolor"
+              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primaryDark resize-none
+              bg-bgcolor text-primaryLight"
               placeholder="Write your comment..."
               value={comment}
               onChange={handleCommentChange}
@@ -98,7 +102,7 @@ const Comments = ({ placeId }) => {
                 id="rating"
                 value={rating}
                 onChange={handleRatingChange}
-                className="border rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-blue-500
+                className="border rounded-md px-2 focus:outline-none focus:ring-2 focus:ring-primaryDark
                 bg-bgcolor"
 
               >
@@ -110,9 +114,10 @@ const Comments = ({ placeId }) => {
                 <option value="5">5 stars</option>
               </select>
             </div>
-            <button type="submit" className="btn-primary px-4 py-2 bg-bgcolor w-40 m-auto rounded-lg text-primaryDark">
+            <button onClick={handleSubmitComment} className="btn-primary px-4 py-2 bg-bgcolor hover:bg-primaryLight w-40 m-auto rounded-lg text-primaryDark">
               Submit Review
             </button>
+            <p className=" text-red-800">{error}</p>
           </form>
         </div>
       )}

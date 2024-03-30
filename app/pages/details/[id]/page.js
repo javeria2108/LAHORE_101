@@ -53,7 +53,7 @@ const PlaceDetails = ({ params }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black opacity-80"></div> {/* Gradient overlay */}
       </div>
-      <div className="flex items-center w-3/4 justify-center m-auto">
+      <div className="flex items-center md:w-3/4 w-full justify-center m-auto">
 <Carousel placeDetails={placeDetails}/>
 </div>
 <div className="flex flex-col items-center w-3/4 justify-center m-auto gap-8 p-10 bg-bgDark bg-opacity-70
